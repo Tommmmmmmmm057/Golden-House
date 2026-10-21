@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>  
+    <head>
+        <title>GOLDERN HOUSE</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe" crossorigin="anonymous">
+    </head>
+    <body>
+        <header>
+            <div id="nav-bar">
+                <div>
+                    GOLDEN HOUSE
+                </div>
+                <nav>
+                    <a>HOME</a>
+                    <a>MENU</a>
+                    <a>LOGIN</a>
+                </nav>
+            </div>
+        </header>
+        <div>
+            <h1 class="cinzel">OUR MENU</h1>
+            <div class="slider-container">
+                <!-- Control Arrows -->
+                <button class="slider-btn prev-btn" onclick="moveSlide(-1)">&#10094;</button>
+                <button class="slider-btn next-btn" onclick="moveSlide(1)">&#10095;</button>
+
+                <!-- Slides Wrapper -->
+                <div class="slider-track" id="sliderTrack">
+                    
+                    <!-- Slide 1 -->
+                    <div class="slide">
+                        <img src="sample.jpg" alt="ProjectXdonate Image 3" onerror="this.src='https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=800&q=80'">
+                    </div>
+
+
+                    <!-- Slide 2 -->
+                    <div class="slide">
+                        <img src="sample.jpg" alt="ProjectXdonate Image 3" onerror="this.src='https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=800&q=80'">
+                    </div>
+
+
+                    <!-- Slide 3 -->
+                    <div class="slide">
+                        <img src="sample.jpg" alt="ProjectXdonate Image 3" onerror="this.src='https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=800&q=80'">
+                    </div>
+
+                    <!-- Slide 4 -->
+                    <div class="slide">
+                        <img src="sample.jpg" alt="ProjectXdonate Image 3" onerror="this.src='https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=800&q=80'">
+                    </div>
+
+
+                    <!-- Slide 5 -->
+                    <div class="slide">
+                        <img src="sample.jpg" alt="ProjectXdonate Image 3" onerror="this.src='https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=800&q=80'">
+                    </div>
+
+                    <!-- Slide 6 -->
+                    <div class="slide">
+                        <img src="sample.jpg" alt="ProjectXdonate Image 3" onerror="this.src='https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=800&q=80'">
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Pagination Dots -->
+            <div class="slider-dots" id="sliderDots"></div>
+                <script>
+                    const track = document.getElementById('sliderTrack');
+                    const slides = document.querySelectorAll('.slide');
+                    const dotsContainer = document.getElementById('sliderDots');
+                    
+                    let currentIndex = 0;
+                    const totalSlides = slides.length;
+
+                    // Create dots dynamically based on the number of slides
+                    for (let i = 0; i < totalSlides; i++) {
+                        const dot = document.createElement('button');
+                        dot.classList.add('dot');
+                        if (i === 0) dot.classList.add('active');
+                        dot.setAttribute('onclick', `currentSlide(${i})`);
+                        dotsContainer.appendChild(dot);
+                    }
+
+                    const dots = document.querySelectorAll('.dot');
+
+                    function updateSlider() {
+                        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+                        
+                        // Update active dot
+                        dots.forEach((dot, index) => {
+                            dot.classList.toggle('active', index === currentIndex);
+                        });
+                    }
+
+                    function moveSlide(direction) {
+                        currentIndex += direction;
+                        if (currentIndex < 0) {
+                            currentIndex = totalSlides - 1;
+                        } else if (currentIndex >= totalSlides) {
+                            currentIndex = 0;
+                        }
+                        updateSlider();
+                    }
+
+                    function currentSlide(index) {
+                        currentIndex = index;
+                        updateSlider();
+                    }
+
+                    // Optional: Auto slide every 5 seconds
+                    setInterval(() => {
+                        moveSlide(1);
+                    }, 5000);
+                </script>
+                <div id="button-container">
+                    <a id="button" href="####">MENU</a>
+                </div>
+            </div>
+        </div> 
+        <footer>
+            <div id="footer-content" >
+                <div>
+                    <h2>Contact Us</h2>
+                    <p>09 123456789</p>
+                    <p>123,Shwe Kyarpin, Naypyidaw.</p>
+                    <p>dummy@gmail.com</p>
+                </div>
+                <div>
+                    <h2>Opening Hours</h2>
+                    <p>9AM-9PM on weekdays</p>
+                    <p>11AM-11PM on weekends</p>
+                    <p>Close on Special Holidays</p>
+                </div>
+            </div>
+        </footer>
+        <script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-1a/pXj49ZQ1aHEmrJ+gMw1otqoVsYwlEnlD8mIfY2TV03r20Y0CN7uqx1tQogjPL" crossorigin="anonymous"></script>
+    </body>
+</html>
